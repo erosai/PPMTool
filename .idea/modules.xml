@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PPMToolFullStack.iml" filepath="$PROJECT_DIR$/.idea/PPMToolFullStack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPMTool/ppmtool.iml" filepath="$PROJECT_DIR$/PPMTool/ppmtool.iml" />
     </modules>
   </component>
 </project>
