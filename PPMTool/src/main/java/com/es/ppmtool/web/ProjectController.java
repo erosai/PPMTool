@@ -8,15 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api/project")
@@ -32,10 +27,14 @@ public class ProjectController {
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project , BindingResult result){
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        // create instance of errorMap to check if there is any error while creating new project
         if(errorMap != null) return errorMap;
+        //if errorMap is not null it means there are errors so it returns the errorMap instead of creating a new project
 
         Project project1 = projectService.saveOrUpdateProject(project);
+        //initiate project1 and call projectService.saveOrUpdateProject to save project
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
+        //confirm project was created
     }
     @GetMapping("/{projectId}")
     public ResponseEntity<?> getProjectById(@PathVariable String projectId){
